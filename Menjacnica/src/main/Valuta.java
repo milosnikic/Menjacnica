@@ -16,37 +16,61 @@ public class Valuta {
 		return naziv;
 	}
 	public void setNaziv(String naziv) {
-		this.naziv = naziv;
+		if (naziv != null && !naziv.isEmpty()) {
+			this.naziv = naziv;
+		}else {
+			throw new RuntimeException("Naziv ne sme biti null ili prazan string");
+		}
 	}
 	public String getSkraceniNaziv() {
 		return skraceniNaziv;
 	}
 	public void setSkraceniNaziv(String skraceniNaziv) {
-		this.skraceniNaziv = skraceniNaziv;
+		if (skraceniNaziv != null && !skraceniNaziv.isEmpty()) {
+			this.skraceniNaziv = skraceniNaziv;
+		}else {
+			throw new RuntimeException("Naziv ne sme biti null ili prazan string");
+		}
 	}
 	public GregorianCalendar getDatum() {
 		return datum;
 	}
 	public void setDatum(GregorianCalendar datum) {
-		this.datum = datum;
+		if (datum.after(new GregorianCalendar())) {
+			this.datum = datum;
+		}else {
+			throw new RuntimeException("Datum mora biti u buducnosti!");
+		}
 	}
 	public double getKupovni() {
 		return kupovni;
 	}
 	public void setKupovni(double kupovni) {
-		this.kupovni = kupovni;
+		if (kupovni >= 0) {
+			this.kupovni = kupovni;
+		}else {
+			throw new RuntimeException("Kurs mora biti veci ili jednak od nule!");
+		}
 	}
 	public double getSrednji() {
 		return srednji;
 	}
 	public void setSrednji(double srednji) {
-		this.srednji = srednji;
+		if (srednji >= 0) {
+			this.srednji = srednji;
+		}else {
+			throw new RuntimeException("Kurs mora biti veci ili jednak od nule!");
+		}
 	}
 	public double getProdajni() {
 		return prodajni;
 	}
 	public void setProdajni(double prodajni) {
-		this.prodajni = prodajni;
+		if (prodajni >= 0) {
+			this.prodajni = prodajni;
+		}else {
+			throw new RuntimeException("Kurs mora biti veci ili jednak od nule!");
+		}
 	}
 	@Override
 	public int hashCode() {
