@@ -6,8 +6,9 @@ import java.util.LinkedList;
 import interfejs.MenjacnicaInterfejs;
 
 public class Menjacnica implements MenjacnicaInterfejs {
-		
-	private LinkedList<Valuta> kursevi 
+
+	private LinkedList<Valuta>kursevi 
+
 				= new LinkedList<Valuta>();
 	@Override
 	public void dodajKurs(String naziv, String skraceniNaziv, GregorianCalendar datum, double prodajni, double srednji,
@@ -23,17 +24,27 @@ public class Menjacnica implements MenjacnicaInterfejs {
 		
 		kursevi.add(novi);
 
+
 	}
 
 	@Override
 	public void obrisiKurs(String naziv, String skraceniNaziv, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
-
+		for (int i = 0; i < kursevi.size(); i++) {
+			Valuta prolaz = kursevi.get(i);
+			if(prolaz.getNaziv().equals(naziv)	&&	 prolaz.getSkraceniNaziv().equals(skraceniNaziv)	&&	prolaz.getDatum().equals(datum)){
+				kursevi.remove(i);
+			}
+				
+		}
 	}
 
 	@Override
 	public Valuta pronadjiKurs(String naziv, String skraceniNaziv, GregorianCalendar datum) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < kursevi.size(); i++) {
+			Valuta prolaz = kursevi.get(i);
+			if(prolaz.getNaziv().equals(naziv) && prolaz.getSkraceniNaziv().equals(skraceniNaziv) && prolaz.getDatum().equals(datum))
+				return prolaz;
+		}
 		return null;
 	}
 
